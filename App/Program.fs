@@ -1,5 +1,13 @@
-﻿open Months
+﻿open Recursion
 
-let result = days_in_month 12
+let fiboResult = fibo 3
 
-printfn "How many days in december? There are %i days in December" result
+let sumResult = sum 5
+
+let sumTwoResult =  sum2(4, 1)
+
+printfn "fibo %i" fiboResult
+
+printfn "sum %i" sumResult
+
+printfn "sum two %i" sumTwoResult

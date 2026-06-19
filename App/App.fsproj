@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Recursion.fs" />
     <Compile Include="Months.fs" />
     <Compile Include="Hello.fs" />
     <Compile Include="Functions.fs" />
