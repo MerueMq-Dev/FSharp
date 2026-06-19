@@ -9,4 +9,4 @@ let g (n) = n + 5 // int -> int
 let gg = fun n -> n + 5 // int -> int
 
 //5.5.3
-let h (x, y) = Math.Sqrt(x * x + y * y) // float * float -> float
+let h (x, y) = Math.Sqrt(Math.Pow(x, 2.0) + Math.Pow(y, 2.0)) // float * float -> float
