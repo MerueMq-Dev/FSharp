@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Months.fs" />
     <Compile Include="Hello.fs" />
     <Compile Include="Functions.fs" />
     <Compile Include="Program.fs" />

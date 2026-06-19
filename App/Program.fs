@@ -1,11 +1,5 @@
-﻿open Functions
+﻿open Months
 
-let resultTen = g 5
+let result = days_in_month 12
 
-let resultFive = gg 0
-
-let result = h (3.0, 4.0)
-
-printfn "%i" resultTen 
-printfn "%i" resultFive 
-printfn "%f" result 
+printfn "How many days in december? There are %i days in December" result
