@@ -1,74 +1,49 @@
-﻿open Math
+﻿
 
-let testCases =
+// 17.4.1
+open Strings
+
+let testPow =
     [
-        // положительные числа
-        (1, 5, true)
-        (2, 4, true)
-        (2, 5, false)
-        (3, 9, true)
-        (3, 10, false)
-        (5, 25, true)
-        (5, 26, false)
-
-        // отрицательный делитель
-        (-2, 4, true)
-        (-2, 5, false)
-        (-3, 9, true)
-        (-3, 10, false)
-
-        // отрицательное делимое
-        (2, -4, true)
-        (2, -5, false)
-        (3, -9, true)
-        (3, -10, false)
-
-        // оба отрицательные
-        (-2, -4, true)
-        (-2, -5, false)
-        (-3, -9, true)
-        (-3, -10, false)
-
-        // ноль как делимое
-        (1, 0, true)
-        (2, 0, true)
-        (-3, 0, true)
+        ("ab", 3, "ababab")
+        ("ab", 1, "ab")
+        ("ab", 0, "")
+        ("x", 5, "xxxxx")
+        ("", 3, "")
     ]
 
-testCases
-|> List.iter (fun (n, m, expected) ->
-    let actual = notDivisible(n, m)
-    printfn "notDivisible(%d, %d) = %b (expected %b)"
-            n m actual expected)
+testPow
+|> List.iter (fun (s, n, expected) ->
+    let actual = pow(s, n)
+    printfn "pow(%s, %d) = %s (expected %s)" s n actual expected)
 
-
-
-let test =
+// 17.4.2
+let testIsIthChar =
     [
-        (2, true)
-        (3, true)
-        (5, true)
-        (7, true)
-        (11, true)
-        (13, true)
-        (97, true)
-        (7919, true)
-        // составные числа
-        (4, false)
-        (6, false)
-        (9, false)
-        (15, false)
-        (25, false)
-        (49, false)
-        (100, false)
-        // граничные случаи
-        (1, false)
-        (0, false)
-        (-1, false)
-        (-7, false)
+        ("hello", 0, 'h', true)
+        ("hello", 1, 'e', true)
+        ("hello", 4, 'o', true)
+        ("hello", 0, 'x', false)
+        ("hello", 2, 'e', false)
     ]
 
-test
-|> List.iter (fun (n, expected) ->
-    let actual = prime n
-    printfn "prime(%d) = %b (expected %b)" n actual expected)
+testIsIthChar
+|> List.iter (fun (s, n, c, expected) ->
+    let actual = isIthChar(s, n, c)
+    printfn "isIthChar(%s, %d, %c) = %b (expected %b)" s n c actual expected)
+
+// 17.4.3
+let testOccFromIth =
+    [
+        ("hello", 0, 'l', 2)
+        ("hello", 3, 'l', 1)
+        ("hello", 4, 'l', 0)
+        ("hello", 0, 'x', 0)
+        ("aaa",   0, 'a', 3)
+        ("aaa",   1, 'a', 2)
+    ]
+
+testOccFromIth
+|> List.iter (fun (s, n, c, expected) ->
+    let actual = occFromIth(s, n, c)
+    printfn "occFromIth(%s, %d, %c) = %d (expected %d)" s n c actual expected)
