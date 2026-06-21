@@ -1,49 +1,45 @@
-﻿
+﻿open Vat
 
-// 17.4.1
-open Strings
-
-let testPow =
+// 20.3.1
+let testVat =
     [
-        ("ab", 3, "ababab")
-        ("ab", 1, "ab")
-        ("ab", 0, "")
-        ("x", 5, "xxxxx")
-        ("", 3, "")
+        (0, 100.0, 100.0)
+        (100, 100.0, 200.0)
+        (50, 100.0, 150.0)
+        (25, 200.0, 250.0)
+        (20, 50.0, 60.0)
     ]
 
-testPow
-|> List.iter (fun (s, n, expected) ->
-    let actual = pow(s, n)
-    printfn "pow(%s, %d) = %s (expected %s)" s n actual expected)
+testVat
+|> List.iter (fun (n, x, expected) ->
+    let actual = vat n x
+    printfn "vat %d %f = %f (expected %f)" n x actual expected)
 
-// 17.4.2
-let testIsIthChar =
+// 20.3.2
+let testUnvat =
     [
-        ("hello", 0, 'h', true)
-        ("hello", 1, 'e', true)
-        ("hello", 4, 'o', true)
-        ("hello", 0, 'x', false)
-        ("hello", 2, 'e', false)
+        (0, 100.0)
+        (100, 100.0)
+        (50, 100.0)
+        (25, 200.0)
+        (20, 50.0)
     ]
 
-testIsIthChar
-|> List.iter (fun (s, n, c, expected) ->
-    let actual = isIthChar(s, n, c)
-    printfn "isIthChar(%s, %d, %c) = %b (expected %b)" s n c actual expected)
+testUnvat
+|> List.iter (fun (n, x) ->
+    let actual = unvat n (vat n x)
+    printfn "unvat %d (vat %d %f) = %f (expected %f)" n n x actual x)
 
-// 17.4.3
-let testOccFromIth =
+// 20.3.3
+let testMin =
     [
-        ("hello", 0, 'l', 2)
-        ("hello", 3, 'l', 1)
-        ("hello", 4, 'l', 0)
-        ("hello", 0, 'x', 0)
-        ("aaa",   0, 'a', 3)
-        ("aaa",   1, 'a', 2)
+        ((fun n -> n - 3), 3)
+        ((fun n -> n - 1), 1)
+        ((fun n -> n - 10), 10)
+        ((fun n -> n * n - 4 * n + 4), 2)  // (n-2)^2
     ]
 
-testOccFromIth
-|> List.iter (fun (s, n, c, expected) ->
-    let actual = occFromIth(s, n, c)
-    printfn "occFromIth(%s, %d, %c) = %d (expected %d)" s n c actual expected)
+testMin
+|> List.iter (fun (f, expected) ->
+    let actual = min f
+    printfn "min f = %d (expected %d)" actual expected)
