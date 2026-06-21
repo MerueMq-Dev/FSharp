@@ -8,7 +8,7 @@ let rec pow = function
     | (str, times) -> str + pow(str, times - 1)
 
 // 17.2
-let sisIthChar  = function
+let isIthChar  = function
     | (_, index, _) when index < 0 -> false
     | (str, index, _) when (String.length str) - 1 < index -> false
     | (str, index, symbol) -> str.[index] = symbol
