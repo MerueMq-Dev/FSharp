@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="CustomOperators.fs" />
     <Compile Include="Curry.fs" />
     <Compile Include="Vat.fs" />
     <Compile Include="Strings.fs" />
