@@ -1,29 +1,43 @@
-﻿open TimeOfDay2
+﻿open Lists
 
-let testTimeOfDay =
+// 34.1
+let testUpto =
     [
-        // PM > AM
-        ({ hours = 1; minutes = 0; f = PM }, { hours = 1; minutes = 0; f = AM }, true)
-        ({ hours = 1; minutes = 0; f = AM }, { hours = 1; minutes = 0; f = PM }, false)
-        // часы больше но AM < PM
-        ({ hours = 11; minutes = 0; f = AM }, { hours = 1; minutes = 0; f = PM }, false)
-        ({ hours = 1; minutes = 0; f = PM }, { hours = 11; minutes = 0; f = AM }, true)
-        // сравнение часов (одинаковый f)
-        ({ hours = 5; minutes = 0; f = AM }, { hours = 3; minutes = 0; f = AM }, true)
-        ({ hours = 3; minutes = 0; f = AM }, { hours = 5; minutes = 0; f = AM }, false)
-        // минуты больше но часы меньше
-        ({ hours = 3; minutes = 59; f = AM }, { hours = 5; minutes = 0; f = AM }, false)
-        ({ hours = 5; minutes = 0; f = AM }, { hours = 3; minutes = 59; f = AM }, true)
-        // сравнение минут (одинаковые f и hours)
-        ({ hours = 5; minutes = 30; f = AM }, { hours = 5; minutes = 0; f = AM }, true)
-        ({ hours = 5; minutes = 0; f = AM }, { hours = 5; minutes = 30; f = AM }, false)
-        // равные
-        ({ hours = 5; minutes = 30; f = AM }, { hours = 5; minutes = 30; f = AM }, false)
-        ({ hours = 5; minutes = 30; f = PM }, { hours = 5; minutes = 30; f = PM }, false)
+        (1, [1])
+        (3, [1; 2; 3])
+        (5, [1; 2; 3; 4; 5])
+        (0, [])
     ]
 
-testTimeOfDay
-|> List.iter (fun (x, y, expected) ->
-    let actual = (.>.) x y
-    printfn "%d:%d .>. %d:%d = %b (expected %b)"
-        x.hours x.minutes y.hours y.minutes actual expected)
+testUpto
+|> List.iter (fun (n, expected) ->
+    let actual = upto n
+    printfn "upto %d = %A (expected %A)" n actual expected)
+
+// 34.2
+let testDnto =
+    [
+        (1, [1])
+        (3, [3; 2; 1])
+        (5, [5; 4; 3; 2; 1])
+        (0, [])
+    ]
+
+testDnto
+|> List.iter (fun (n, expected) ->
+    let actual = dnto n
+    printfn "dnto %d = %A (expected %A)" n actual expected)
+
+// 34.3
+let testEvenn =
+    [
+        (1, [0])
+        (3, [0; 2; 4])
+        (5, [0; 2; 4; 6; 8])
+        (0, [])
+    ]
+
+testEvenn
+|> List.iter (fun (n, expected) ->
+    let actual = evenn n
+    printfn "evenn %d = %A (expected %A)" n actual expected)
