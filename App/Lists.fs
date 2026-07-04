@@ -8,11 +8,11 @@ let upto n =
     helper 1
 
 // 34.2
-let rec dnto = function 
-    | n when n <= 0 -> []
-    | n -> n :: dnto(n - 1)
+let rec dnto n =
+    if n <= 0 then []
+    else n :: dnto (n - 1)
 
-//// 34.3
+// 34.3
 let evenn n =
     let rec helper i =
         if i >= n then []
