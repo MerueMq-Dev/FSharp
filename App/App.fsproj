@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Lists2.fs" />
     <Compile Include="Lists.fs" />
     <Compile Include="TimeOfDay2.fs" />
     <Compile Include="TimeOfDay.fs" />
