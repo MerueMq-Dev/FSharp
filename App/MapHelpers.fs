@@ -1,4 +1,3 @@
 ﻿module MapHelpers
-
 // 43.3
-let try_find key m = Map.foldBack (fun k v acc -> if k = key then Some v else acc) m None
+let try_find key m = if Map.containsKey key m then Some (Map.find key m) else None
