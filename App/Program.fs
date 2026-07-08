@@ -1,16 +1,14 @@
-﻿open SetHelpers
+﻿open MapHelpers
 
-let testAllSubsets =
+let testTryFind =
     [
-        (3, 0, [[]])
-        (3, 1, [[1]; [2]; [3]])
-        (3, 2, [[1; 2]; [1; 3]; [2; 3]])
-        (3, 3, [[1; 2; 3]])
-        (4, 2, [[1; 2]; [1; 3]; [1; 4]; [2; 3]; [2; 4]; [3; 4]])
-        (0, 0, [[]])
+        (1, Map.ofList [(1, "a"); (2, "b"); (3, "c")], Some "a")
+        (2, Map.ofList [(1, "a"); (2, "b"); (3, "c")], Some "b")
+        (4, Map.ofList [(1, "a"); (2, "b"); (3, "c")], None)
+        (1, Map.empty, None)
     ]
 
-testAllSubsets
-|> List.iter (fun (n, k, expected) ->
-    let actual = allSubsets n k
-    printfn "allSubsets %d %d = %A (expected %A)" n k actual expected)
+testTryFind
+|> List.iter (fun (key, m, expected) ->
+    let actual = try_find key m
+    printfn "try_find %d %A = %A (expected %A)" key m actual expected)
