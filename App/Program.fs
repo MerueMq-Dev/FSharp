@@ -1,19 +1,36 @@
-﻿open MapHelpers
+﻿open ImperativeStyle
 
-let testTryFind =
+
+// 47.4.1
+let testFactorial =
     [
-        (1, Map.ofList [(1, "a"); (2, "b"); (3, "c")], Some "a")
-        (2, Map.ofList [(1, "a"); (2, "b"); (3, "c")], Some "b")
-        (4, Map.ofList [(1, "a"); (2, "b"); (3, "c")], None)
-        (1, Map.ofList [(1, "")], Some "")
-        (1, Map.empty, None)
-        (1, Map.ofList [(1, "a"); (2, "b"); (3, "c")], Some "a")  // уже есть
-        (3, Map.ofList [(1, "a"); (2, "b"); (3, "c")], Some "c")  // последний
-        (0, Map.ofList [(1, "a"); (2, "b"); (3, "c")], None)  // меньше минимального
-        (4, Map.ofList [(1, "a"); (2, "b"); (3, "c")], None)  // больше максимального — уже есть
+        (0, 1)
+        (1, 1)
+        (2, 2)
+        (3, 6)
+        (5, 120)
+        (7, 5040)
     ]
 
-testTryFind
-|> List.iter (fun (key, m, expected) ->
-    let actual = try_find key m
-    printfn "try_find %d %A = %A (expected %A)" key m actual expected)
+testFactorial
+|> List.iter (fun (n, expected) ->
+    let actual = f n
+    printfn "f %d = %d (expected %d)" n actual expected)
+
+// 47.4.2
+let testFibo =
+    [
+        (0, 0)
+        (1, 1)
+        (2, 1)
+        (3, 2)
+        (4, 3)
+        (5, 5)
+        (6, 8)
+        (7, 13)
+    ]
+
+testFibo
+|> List.iter (fun (n, expected) ->
+    let actual = fibo n
+    printfn "fibo %d = %d (expected %d)" n actual expected)

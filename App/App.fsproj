@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="ImperativeStyle.fs" />
     <Compile Include="MapHelpers.fs" />
     <Compile Include="SetHelpers.fs" />
     <Compile Include="Lists3.fs" />
