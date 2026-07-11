@@ -1,22 +1,4 @@
-﻿open LazySequence
-
-
-// 49.5.1
-let testEvenSeq =
-    [
-        (1, 2)
-        (2, 4)
-        (3, 6)
-        (4, 8)
-        (5, 10)
-        (6, 12)
-        (10, 20)
-    ]
-
-testEvenSeq
-|> List.iter (fun (n, expected) ->
-    let actual = Seq.item (n - 1) even_seq
-    printfn "even_seq[%d] = %d (expected %d)" n actual expected)
+﻿open SequenceExpressions
 
 // 49.5.2
 let testFacSeq =

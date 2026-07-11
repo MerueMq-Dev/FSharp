@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="SequenceExpressions.fs" />
     <Compile Include="LazySequence.fs" />
     <Compile Include="LazyEvaluation.fs" />
     <Compile Include="ImperativeStyle.fs" />
