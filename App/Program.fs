@@ -1,50 +1,52 @@
-﻿open LazyEvaluation
+﻿open LazySequence
 
 
-// 48.4.1
-let testFibo1 =
+// 49.5.1
+let testEvenSeq =
     [
-        (6, 1, 0, 8)
-        (6, 5, 3, 55)
-        (0, 1, 0, 0)
-        (1, 1, 0, 1)
-        (2, 1, 0, 1)
-        (3, 1, 0, 2)
+        (1, 2)
+        (2, 4)
+        (3, 6)
+        (4, 8)
+        (5, 10)
+        (6, 12)
+        (10, 20)
     ]
 
-testFibo1
-|> List.iter (fun (n, n1, n2, expected) ->
-    let actual = fibo1 n n1 n2
-    printfn "fibo1 %d %d %d = %d (expected %d)" n n1 n2 actual expected)
+testEvenSeq
+|> List.iter (fun (n, expected) ->
+    let actual = Seq.item (n - 1) even_seq
+    printfn "even_seq[%d] = %d (expected %d)" n actual expected)
 
-// 48.4.2
-let testFibo2 =
+// 49.5.2
+let testFacSeq =
     [
-        (0, id, 0)
-        (1, id, 1)
-        (2, id, 1)
-        (3, id, 2)
-        (4, id, 3)
-        (5, id, 5)
-        (6, id, 8)
+        (0, 1)
+        (1, 1)
+        (2, 2)
+        (3, 6)
+        (4, 24)
+        (5, 120)
     ]
 
-testFibo2
-|> List.iter (fun (n, c, expected) ->
-    let actual = fibo2 n c
-    printfn "fibo2 %d = %d (expected %d)" n actual expected)
+testFacSeq
+|> List.iter (fun (n, expected) ->
+    let actual = Seq.item n fac_seq
+    printfn "fac_seq[%d] = %d (expected %d)" n actual expected)
 
-// 48.4.3
-let testBigList =
+// 49.5.3
+let testSeqSeq =
     [
-        (0, id, [])
-        (1, id, [1])
-        (5, id, [1; 1; 1; 1; 1])
-        (10, id, List.replicate 10 1)
-        (230000, id, List.replicate 230000 1)
+        (0, 0)
+        (1, -1)
+        (2, 1)
+        (3, -2)
+        (4, 2)
+        (5, -3)
+        (6, 3)
     ]
 
-testBigList
-|> List.iter (fun (n, k, expected) ->
-    let actual = bigList n k
-    printfn "bigList %d = (length %d) (expected length %d)" n (List.length actual) (List.length expected))
+testSeqSeq
+|> List.iter (fun (n, expected) ->
+    let actual = Seq.item n seq_seq
+    printfn "seq_seq[%d] = %d (expected %d)" n actual expected)
