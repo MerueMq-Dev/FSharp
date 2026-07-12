@@ -1,34 +1,18 @@
-﻿open SequenceExpressions
+﻿open LazyEvaluation2
 
-// 49.5.2
-let testFacSeq =
-    [
-        (0, 1)
-        (1, 1)
-        (2, 2)
-        (3, 6)
-        (4, 24)
-        (5, 120)
-    ]
-
-testFacSeq
-|> List.iter (fun (n, expected) ->
-    let actual = Seq.item n fac_seq
-    printfn "fac_seq[%d] = %d (expected %d)" n actual expected)
-
-// 49.5.3
-let testSeqSeq =
+let testNth =
     [
         (0, 0)
-        (1, -1)
-        (2, 1)
-        (3, -2)
-        (4, 2)
-        (5, -3)
-        (6, 3)
+        (1, 1)
+        (2, 2)
+        (5, 5)
+        (10, 10)
+        (30000, 30000)
     ]
 
-testSeqSeq
+let rec nat (n:int) : 'a cell = Cons (n, lazy(nat(n+1)))
+let n0 = nat 0
+testNth
 |> List.iter (fun (n, expected) ->
-    let actual = Seq.item n seq_seq
-    printfn "seq_seq[%d] = %d (expected %d)" n actual expected)
+    let actual = nth n0 n
+    printfn "nth n0 %d = %d (expected %d)" n actual expected)
