@@ -11,10 +11,10 @@ let tl (s : 'a cell) : Lazy<'a cell> =
     Nil -> failwith "tl"
   | Cons (_, g) -> g
 
-
 // 51.3
 let rec nth (s : 'a cell) (n : int) : 'a =
-   if n = 0 then hd s
-   else 
-   let z = (tl s).Force()
-   nth z (n - 1)
+    if n = 0 then
+        hd s
+    else
+        let z = (tl s).Force()
+        nth z (n - 1)
