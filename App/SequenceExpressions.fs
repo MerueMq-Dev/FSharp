@@ -2,7 +2,7 @@
 // 50.2.1
 let fac_seq =
     seq {
-        let mutable fact = 0
+        let mutable fact = 1
         for i in Seq.initInfinite ((+) 1) do
             yield fact
             fact <- fact * i
